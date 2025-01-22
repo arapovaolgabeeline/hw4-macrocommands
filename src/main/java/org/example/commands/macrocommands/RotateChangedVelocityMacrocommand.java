@@ -4,6 +4,7 @@ import java.util.List;
 import org.example.commands.BurnFuelCommand;
 import org.example.commands.CheckFuelCommand;
 import org.example.commands.RotateCommand;
+import org.example.models.IFuelBurningObject;
 import org.example.models.IRotatingObject;
 
 /**
@@ -13,8 +14,8 @@ import org.example.models.IRotatingObject;
  * */
 public class RotateChangedVelocityMacrocommand extends MacroCommand {
 
-    protected RotateChangedVelocityMacrocommand(IRotatingObject object) {
-        super(List.of(new CheckFuelCommand(), new RotateCommand(object), new BurnFuelCommand()));
+    protected RotateChangedVelocityMacrocommand(IRotatingObject object, IFuelBurningObject fuelBurningObject) {
+        super(List.of(new CheckFuelCommand(fuelBurningObject), new RotateCommand(object), new BurnFuelCommand(fuelBurningObject)));
     }
 
 }
