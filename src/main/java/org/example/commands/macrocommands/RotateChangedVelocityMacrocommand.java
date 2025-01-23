@@ -3,6 +3,7 @@ package org.example.commands.macrocommands;
 import java.util.List;
 import org.example.commands.ChangeVelocityCommand;
 import org.example.commands.RotateCommand;
+import org.example.models.IMovingObject;
 import org.example.models.IRotatingObject;
 import org.example.models.IVelocityChangingObject;
 
@@ -11,8 +12,9 @@ import org.example.models.IVelocityChangingObject;
  */
 public class RotateChangedVelocityMacrocommand extends MacroCommand {
 
-    protected RotateChangedVelocityMacrocommand(IRotatingObject object, IVelocityChangingObject velocityChangingObject) {
-        super(List.of(new RotateCommand(object), new ChangeVelocityCommand(velocityChangingObject)));
+    protected RotateChangedVelocityMacrocommand(IRotatingObject rotatingObject, IVelocityChangingObject velocityChangingObject,
+                                                IMovingObject movingObject) {
+        super(List.of(new RotateCommand(rotatingObject), new ChangeVelocityCommand(velocityChangingObject, rotatingObject, movingObject)));
     }
 
 }

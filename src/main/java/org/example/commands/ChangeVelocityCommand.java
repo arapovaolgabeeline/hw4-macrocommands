@@ -1,5 +1,8 @@
 package org.example.commands;
 
+import java.util.Objects;
+import org.example.models.IMovingObject;
+import org.example.models.IRotatingObject;
 import org.example.models.IVelocityChangingObject;
 
 /**
@@ -7,20 +10,30 @@ import org.example.models.IVelocityChangingObject;
  * Необходимо учесть, что не каждый разворачивающийся объект движется.
  * */
 public class ChangeVelocityCommand implements ICommand {
-    private final IVelocityChangingObject object;
+    private final IVelocityChangingObject velocityChangingObject;
+    private final IRotatingObject rotatingObject;
+    private final IMovingObject movingObject;
 
-    public ChangeVelocityCommand(IVelocityChangingObject object) {
-        this.object = object;
+    public ChangeVelocityCommand(IVelocityChangingObject velocityChangingObject, IRotatingObject rotatingObject, IMovingObject movingObject) {
+        this.velocityChangingObject = velocityChangingObject;
+        this.rotatingObject = rotatingObject;
+        this.movingObject = movingObject;
     }
 
     @Override
     public void execute() {
-        // как мы поймем, движется он или нет?
-        // куда менять вектор мгновенной скорости? нам надо знать, куда именно он поворачивает
-        if (true) { // объект движется
-            object.setVelocity(new Number[]{}); // а как менять? куда поворачивает?
+        if (isMovableObject()) {
+            Double angularVelocity = Math.toRadians((Double) rotatingObject.getAngularVelocity());
+            velocityChangingObject.setVelocity(new Number[]{
+                    (Double) movingObject.getVelocity()[0] * Math.cos(angularVelocity) - (Double) movingObject.getVelocity()[1] * Math.sin(angularVelocity),
+                    (Double) movingObject.getVelocity()[0] * Math.sin(angularVelocity) + (Double) movingObject.getVelocity()[1] * Math.cos(angularVelocity)
+            });
         }
 
+    }
+
+    private boolean isMovableObject() {
+        return Objects.nonNull(movingObject);
     }
 
 }
