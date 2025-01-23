@@ -1,17 +1,26 @@
 package org.example.commands;
 
-import org.example.models.IRotatingObject;
+import org.example.models.IVelocityChangingObject;
 
+/**
+ * Команда для модификации вектора мгновенной скорости при повороте.
+ * Необходимо учесть, что не каждый разворачивающийся объект движется.
+ * */
 public class ChangeVelocityCommand implements ICommand {
-    private IRotatingObject object;
+    private final IVelocityChangingObject object;
 
-    public ChangeVelocityCommand(IRotatingObject object) {
+    public ChangeVelocityCommand(IVelocityChangingObject object) {
         this.object = object;
     }
 
     @Override
     public void execute() {
-        // а тут адаптер нужен или какое там от нас требуется velocity? наверное, из IRotatingObject
+        // как мы поймем, движется он или нет?
+        // куда менять вектор мгновенной скорости? нам надо знать, куда именно он поворачивает
+        if (true) { // объект движется
+            object.setVelocity(new Number[]{}); // а как менять? куда поворачивает?
+        }
+
     }
 
 }

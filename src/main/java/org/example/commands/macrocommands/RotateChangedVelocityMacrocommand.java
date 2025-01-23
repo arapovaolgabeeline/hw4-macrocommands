@@ -1,21 +1,18 @@
 package org.example.commands.macrocommands;
 
 import java.util.List;
-import org.example.commands.BurnFuelCommand;
-import org.example.commands.CheckFuelCommand;
+import org.example.commands.ChangeVelocityCommand;
 import org.example.commands.RotateCommand;
-import org.example.models.IFuelBurningObject;
 import org.example.models.IRotatingObject;
+import org.example.models.IVelocityChangingObject;
 
 /**
- * При повороте движущегося объекта меняется вектор мгновенной скорости. Напишите команду, которая модифицирует вектор
- * мгновенной скорости, в случае поворота.
- * Постройте цепочку команд для поворота.
- * */
+ * При повороте движущегося объекта меняется вектор мгновенной скорости
+ */
 public class RotateChangedVelocityMacrocommand extends MacroCommand {
 
-    protected RotateChangedVelocityMacrocommand(IRotatingObject object, IFuelBurningObject fuelBurningObject) {
-        super(List.of(new CheckFuelCommand(fuelBurningObject), new RotateCommand(object), new BurnFuelCommand(fuelBurningObject)));
+    protected RotateChangedVelocityMacrocommand(IRotatingObject object, IVelocityChangingObject velocityChangingObject) {
+        super(List.of(new RotateCommand(object), new ChangeVelocityCommand(velocityChangingObject)));
     }
 
 }
