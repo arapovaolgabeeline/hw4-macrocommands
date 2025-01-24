@@ -7,7 +7,7 @@ import org.example.models.IFuelBurningObject;
  * проверяет, что топлива достаточно, если нет, то выбрасывает исключение CommandException
  */
 public class CheckFuelCommand implements ICommand {
-    private final IFuelBurningObject object;
+    private IFuelBurningObject object;
 
     public CheckFuelCommand(IFuelBurningObject object) {
         this.object = object;

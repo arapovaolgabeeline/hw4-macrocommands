@@ -3,7 +3,7 @@ package org.example.adaptors;
 import org.example.models.IVelocityChangingObject;
 import org.example.models.UObject;
 
-public class VelocityChangingObjectAdapter implements IVelocityChangingObject{
+public class VelocityChangingObjectAdapter implements IVelocityChangingObject {
     private UObject object;
 
     @Override
@@ -11,8 +11,4 @@ public class VelocityChangingObjectAdapter implements IVelocityChangingObject{
         object.setProperty("Velocity", vector);
     }
 
-//    @Override
-//    public Boolean isMoving() {
-////        return object.;
-//    }
 }

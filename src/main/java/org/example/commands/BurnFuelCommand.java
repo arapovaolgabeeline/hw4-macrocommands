@@ -6,7 +6,7 @@ import org.example.models.IFuelBurningObject;
  * уменьшает количество топлива на скорость расхода топлива
  * */
 public class BurnFuelCommand implements ICommand {
-    private IFuelBurningObject object;
+    private final IFuelBurningObject object;
 
     public BurnFuelCommand(IFuelBurningObject object) {
         this.object = object;

@@ -24,9 +24,10 @@ public class ChangeVelocityCommand implements ICommand {
     public void execute() {
         if (isMovableObject()) {
             Double angularVelocity = Math.toRadians((Double) rotatingObject.getAngularVelocity());
-            velocityChangingObject.setVelocity(new Number[]{
-                    (Double) movingObject.getVelocity()[0] * Math.cos(angularVelocity) - (Double) movingObject.getVelocity()[1] * Math.sin(angularVelocity),
-                    (Double) movingObject.getVelocity()[0] * Math.sin(angularVelocity) + (Double) movingObject.getVelocity()[1] * Math.cos(angularVelocity)
+            Double[] velocity = (Double[]) movingObject.getVelocity();
+            velocityChangingObject.setVelocity(new Double[]{
+                    velocity[0] * Math.cos(angularVelocity) - velocity[1] * Math.sin(angularVelocity),
+                    velocity[0] * Math.sin(angularVelocity) + velocity[1] * Math.cos(angularVelocity)
             });
         }
 
