@@ -3,6 +3,9 @@ package org.example.adaptors;
 import org.example.models.UObject;
 import org.example.models.IRotatingObject;
 
+/**
+ * Код из дз 1, не менялся
+ */
 public class RotatingObjectAdapter implements IRotatingObject {
     private UObject uObject;
 

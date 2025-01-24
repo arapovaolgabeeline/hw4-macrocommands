@@ -2,6 +2,9 @@ package org.example.commands;
 
 import org.example.models.IRotatingObject;
 
+/**
+ * Код из дз 1, не менялся
+ */
 public class RotateCommand implements ICommand {
     private final IRotatingObject rotatingObject;
 
