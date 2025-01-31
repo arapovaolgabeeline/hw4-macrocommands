@@ -18,7 +18,7 @@ class IMovingCommandTest {
         when(movingObject.getPosition()).thenReturn(new Number[]{12D, 5D});
         when(movingObject.getVelocity()).thenReturn(new Number[]{-7D, 3D});
         IMovingCommand movingCommand = new IMovingCommand(movingObject);
-        ArgumentCaptor<Number[]> updatedLocation = new ArgumentCaptor<>();
+        ArgumentCaptor<Number[]> updatedLocation = ArgumentCaptor.captor();
 
         movingCommand.execute();
         verify(movingObject).setPosition(updatedLocation.capture());

@@ -2,6 +2,9 @@ package org.example.commands;
 
 import org.example.models.IMovingObject;
 
+/**
+ * Код из дз 1, не менялся
+ */
 public class IMovingCommand implements ICommand {
     private final IMovingObject movingObject;
 

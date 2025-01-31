@@ -18,7 +18,7 @@ class RotateCommandTest {
         when(rotatingObject.getAngle()).thenReturn(120D);
         when(rotatingObject.getAngularVelocity()).thenReturn(-70D);
         RotateCommand rotateCommand = new RotateCommand(rotatingObject);
-        ArgumentCaptor<Number> updatedAngle = new ArgumentCaptor<>();
+        ArgumentCaptor<Number> updatedAngle = ArgumentCaptor.captor();
 
         rotateCommand.execute();
         verify(rotatingObject).setAngle(updatedAngle.capture());
